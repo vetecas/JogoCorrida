@@ -38,15 +38,15 @@ namespace JogoCorridaWinFormsApp
 
             if(Nivel == "Facil")
             {
-                jogo.Velociade = 100;
+                jogo.Velociade = 60;
 
             }else if (Nivel == "Medio")
             {
-                jogo.Velociade = 150;
+                jogo.Velociade = 40;
             }
             else
             {
-                jogo.Velociade = 200;
+                jogo.Velociade = 20;
             }
 
             foreach (var ob in jogo.Obstaculos) // CRIANDO OBSTACULOS

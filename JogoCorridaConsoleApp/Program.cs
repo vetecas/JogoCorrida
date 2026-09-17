@@ -21,7 +21,6 @@ class Progran
             
         for (; ; ) {
 
-            DesenharCenario();
             DesenharElemento(jogo.Carro.PosicaoY, jogo.Carro.PosicaoX, '8');
 
             foreach (var ob in jogo.Obstaculos)
@@ -78,24 +77,6 @@ class Progran
     {
         Console.Clear();
         Console.WriteLine("GAMER OVER");
-
-    }
-
-    public static void DesenharCenario()
-    {
-        Console.Clear();
-        Console.WriteLine("+----------+----------+");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("|          |          |");
-        Console.WriteLine("+----------+----------+");
 
     }
 
