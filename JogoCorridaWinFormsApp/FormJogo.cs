@@ -10,11 +10,13 @@ namespace JogoCorridaWinFormsApp
         Jogo jogo;
         DateTime tempoUltimaMovimentaca = DateTime.Now;
         List<PictureBox> pictureBoxes = [];
+        int pontuacao = 0;
+        SoundPlayer? sp;
 
         public FormJogoCorrida(String Nivel)
         {
             InitializeComponent();
-
+            this.FormClosing += FormJogoCorrida_FormClosing;
             SomJogoCorrida();
 
             // Faz parar de piscar
@@ -37,11 +39,12 @@ namespace JogoCorridaWinFormsApp
             jogo.Carro.PosicaoX = jogo.PosicionaObjeto(1);
             //jogo.Velociade = 50;
 
-            if(Nivel == "Facil")
+            if (Nivel == "Facil")
             {
                 jogo.Velociade = 60;
 
-            }else if (Nivel == "Medio")
+            }
+            else if (Nivel == "Medio")
             {
                 jogo.Velociade = 40;
             }
@@ -102,6 +105,8 @@ namespace JogoCorridaWinFormsApp
             {
                 tempoUltimaMovimentaca = DateTime.Now;
                 jogo.MovimentaObstaculos();
+                pontuacao += 1;
+                lblPontuacao.Text = $"Pontos: {pontuacao}";
             }
 
             if (jogo.ChecarColisao())
@@ -116,14 +121,15 @@ namespace JogoCorridaWinFormsApp
         {
             TimerJogo.Enabled = false;
             TocarSomBatida();
+            MessageBox.Show($"Fim de Jogo! Pontuação final: {pontuacao}", "Game Over");
             Close();
         }
 
         private void SomJogoCorrida()
         {
-            SoundPlayer sp = new SoundPlayer();
+            sp = new SoundPlayer();
             sp.SoundLocation = Path.Combine(Application.StartupPath, "Resources", "somMotorCarro.wav");
-            sp.Play();
+            sp.PlayLooping();
 
         }
 
@@ -135,8 +141,19 @@ namespace JogoCorridaWinFormsApp
             Thread.Sleep(1000);
         }
 
+        private void FormJogoCorrida_FormClosing(object? sender, FormClosingEventArgs e) // encerra o jogo quando fechar a janela FormJogo
+        {
+            // Para o Timer imediatamente para parar colisões e som
+            if (TimerJogo != null)
+            {
+                TimerJogo.Stop();
+                TimerJogo.Enabled = false;
+            }
+            sp?.Stop();
+        }
+
     }
-    
+
 }
 
 

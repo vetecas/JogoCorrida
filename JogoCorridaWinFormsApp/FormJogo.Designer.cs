@@ -32,6 +32,7 @@
             PicCarro = new PictureBox();
             PicObstaculo = new PictureBox();
             TimerJogo = new System.Windows.Forms.Timer(components);
+            lblPontuacao = new Label();
             ((System.ComponentModel.ISupportInitialize)PicCarro).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicObstaculo).BeginInit();
             SuspendLayout();
@@ -41,9 +42,10 @@
             PicCarro.BackColor = Color.Transparent;
             PicCarro.BackgroundImage = Properties.Resources.Carro_Corrida_Cinza;
             PicCarro.BackgroundImageLayout = ImageLayout.Stretch;
-            PicCarro.Location = new Point(285, 550);
+            PicCarro.Location = new Point(290, 472);
             PicCarro.Name = "PicCarro";
             PicCarro.Size = new Size(103, 113);
+            PicCarro.SizeMode = PictureBoxSizeMode.StretchImage;
             PicCarro.TabIndex = 0;
             PicCarro.TabStop = false;
             // 
@@ -52,7 +54,7 @@
             PicObstaculo.BackColor = Color.Transparent;
             PicObstaculo.BackgroundImage = Properties.Resources.Carro_Obstaculo_Laranja;
             PicObstaculo.BackgroundImageLayout = ImageLayout.Stretch;
-            PicObstaculo.Location = new Point(159, 26);
+            PicObstaculo.Location = new Point(165, 29);
             PicObstaculo.Name = "PicObstaculo";
             PicObstaculo.Size = new Size(103, 113);
             PicObstaculo.TabIndex = 1;
@@ -64,6 +66,17 @@
             TimerJogo.Interval = 20;
             TimerJogo.Tick += TimerJogo_Tick;
             // 
+            // lblPontuacao
+            // 
+            lblPontuacao.AutoSize = true;
+            lblPontuacao.BackColor = Color.Transparent;
+            lblPontuacao.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPontuacao.Location = new Point(425, 9);
+            lblPontuacao.Name = "lblPontuacao";
+            lblPontuacao.Size = new Size(83, 18);
+            lblPontuacao.TabIndex = 2;
+            lblPontuacao.Text = "Pontos: 0";
+            // 
             // FormJogoCorrida
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -71,6 +84,7 @@
             BackgroundImage = Properties.Resources.Pista_Corrida_SemArvore;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(575, 657);
+            Controls.Add(lblPontuacao);
             Controls.Add(PicObstaculo);
             Controls.Add(PicCarro);
             Name = "FormJogoCorrida";
@@ -80,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)PicCarro).EndInit();
             ((System.ComponentModel.ISupportInitialize)PicObstaculo).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -87,5 +102,6 @@
         private PictureBox PicCarro;
         private PictureBox PicObstaculo;
         private System.Windows.Forms.Timer TimerJogo;
+        private Label lblPontuacao;
     }
 }
