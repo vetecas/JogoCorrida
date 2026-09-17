@@ -1,6 +1,7 @@
 using JogoCorrida;
-using System.Drawing.Text;
 using System.Media;
+
+
 
 namespace JogoCorridaWinFormsApp
 {
@@ -14,7 +15,7 @@ namespace JogoCorridaWinFormsApp
         {
             InitializeComponent();
 
-            //SomJogoCorrida();
+            SomJogoCorrida();
 
             // Faz parar de piscar
             this.DoubleBuffered = true;
@@ -114,26 +115,28 @@ namespace JogoCorridaWinFormsApp
         private void GamerOver()
         {
             TimerJogo.Enabled = false;
-            // TocarSom();
+            TocarSomBatida();
             Close();
         }
 
+        private void SomJogoCorrida()
+        {
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = Path.Combine(Application.StartupPath, "Resources", "somMotorCarro.wav");
+            sp.Play();
+
+        }
+
+        private void TocarSomBatida()
+        {
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = Path.Combine(Application.StartupPath, "Resources", "somBatidaCarro.wav");
+            sp.Play();
+            Thread.Sleep(1000);
+        }
+
     }
+    
 }
 
-/*
-    private void SomJogoCorrida{
-        SoundPlayer sp = new SoundPlayer();
-        sp.SoundLocation = "caminho do arquivo do som";
-        sp.Play();
 
-    }
-
-    private void TocarSomBatida()
-{
-    SoundPlayer sp = new SoundPlayer();
-    sp.SoundLocation = "caminho do arquivo do som";
-        sp.Play();
-        Thread.Sleep(1000);
- }
-*/

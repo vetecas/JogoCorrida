@@ -81,7 +81,7 @@
             foreach (var ob in Obstaculos)
             {
                 if (ChecaFaixaElemento(Carro) == ChecaFaixaElemento(ob)){
-                    if(Math.Abs(Carro.PosicaoY - ob.PosicaoY) <= 10)
+                    if(Math.Abs(Carro.PosicaoY - ob.PosicaoY) <= 40)
                         return true;
                     }
                 }
